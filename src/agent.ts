@@ -32,6 +32,10 @@ export default defineAgent({
         aiGatewayId: config.cloudflare.aiGatewayId,
       }),
       tts: createCartesiaTTS(config.cartesia),
+      turnHandling: {
+        turnDetection: "vad",
+        preemptiveGeneration: { enabled: false },
+      },
       transcriptionTimeout: 5000,
     });
 
