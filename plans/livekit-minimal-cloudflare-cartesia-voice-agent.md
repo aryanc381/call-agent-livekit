@@ -181,4 +181,4 @@ Execution is sequential. No subagents are needed because the worker and provider
 - Cloudflare STT may be turn-based rather than fully streaming, which can increase response latency.
 - Cartesia is connected through its LiveKit TypeScript provider integration.
 - LiveKit Playground is sufficient for the first WebRTC client; a custom frontend can be planned later.
-- Implementation has not started.
+- The implementation is in place. End-to-end provider verification still requires a running local LiveKit server and real Cloudflare/Cartesia credentials.
