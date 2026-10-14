@@ -33,7 +33,8 @@ export default defineAgent({
       }),
       tts: createCartesiaTTS(config.cartesia),
       turnHandling: {
-        turnDetection: "vad",
+        turnDetection: "stt",
+        interruption: { mode: "vad" },
         preemptiveGeneration: { enabled: false },
       },
       transcriptionTimeout: 5000,
