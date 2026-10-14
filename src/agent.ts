@@ -19,8 +19,18 @@ Never use markdown, emojis, bullets, or long explanations.`;
 export default defineAgent({
   entry: async (ctx: JobContext) => {
     const session = new voice.AgentSession({
-      stt: new CloudflareSTT(config.cloudflare.stt),
-      llm: createCloudflareLLM(config.cloudflare.llm),
+      stt: new CloudflareSTT({
+        ...config.cloudflare.stt,
+        accountId: config.cloudflare.accountId,
+        apiToken: config.cloudflare.apiToken,
+        aiGatewayId: config.cloudflare.aiGatewayId,
+      }),
+      llm: createCloudflareLLM({
+        ...config.cloudflare.llm,
+        accountId: config.cloudflare.accountId,
+        apiToken: config.cloudflare.apiToken,
+        aiGatewayId: config.cloudflare.aiGatewayId,
+      }),
       tts: createCartesiaTTS(config.cartesia),
       transcriptionTimeout: 5000,
     });

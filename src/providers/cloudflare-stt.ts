@@ -3,8 +3,9 @@ import type { APIConnectOptions } from "@livekit/agents";
 import { combineAudioFrames, type AudioFrame } from "@livekit/rtc-node";
 
 type CloudflareSTTOptions = {
-  url: string;
-  apiKey: string;
+  accountId: string;
+  apiToken: string;
+  aiGatewayId: string;
   model: string;
   language?: string;
 };
@@ -33,15 +34,19 @@ export class CloudflareSTT extends stt.STT {
       },
     };
 
-    const response = await fetch(this.options.url, {
-      method: "POST",
-      headers: {
-        Authorization: `Bearer ${this.options.apiKey}`,
-        "Content-Type": "application/json",
+    const response = await fetch(
+      `https://api.cloudflare.com/client/v4/accounts/${this.options.accountId}/ai/run`,
+      {
+        method: "POST",
+        headers: {
+          Authorization: `Bearer ${this.options.apiToken}`,
+          "cf-aig-gateway-id": this.options.aiGatewayId,
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(body),
+        signal: abortSignal,
       },
-      body: JSON.stringify(body),
-      signal: abortSignal,
-    });
+    );
 
     if (!response.ok) {
       throw new Error(`Cloudflare STT failed with HTTP ${response.status}`);

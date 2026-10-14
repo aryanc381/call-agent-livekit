@@ -23,6 +23,6 @@ cp .env.example .env
 pnpm dev
 ```
 
-Set the Cloudflare and Cartesia values in `.env`. `CLOUDFLARE_LLM_BASE_URL` must point to the base URL of an OpenAI-compatible chat-completions endpoint. `CLOUDFLARE_STT_URL` must accept the Cloudflare `/ai/run`-style JSON body and return a transcript as `text` or `result.text`.
+Set the Cloudflare and Cartesia values in `.env`. The Cloudflare configuration matches the existing `call-agent` provider setup: Workers AI uses the account-scoped OpenAI-compatible chat endpoint, while Grok STT uses the account-scoped `/ai/run` endpoint.
 
 Use LiveKit Playground or another LiveKit client to join the local room and speak with the agent.

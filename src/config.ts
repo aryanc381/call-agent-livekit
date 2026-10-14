@@ -13,20 +13,19 @@ export const config = {
     apiSecret: required("LIVEKIT_API_SECRET"),
   },
   cloudflare: {
+    accountId: required("CLOUDFLARE_ACCOUNT_ID"),
+    apiToken: required("CLOUDFLARE_API_TOKEN"),
+    aiGatewayId: required("CLOUDFLARE_AI_GATEWAY_ID"),
     llm: {
-      baseURL: required("CLOUDFLARE_LLM_BASE_URL"),
-      apiKey: required("CLOUDFLARE_LLM_API_KEY"),
-      model: required("CLOUDFLARE_LLM_MODEL"),
+      model: required("CLOUDFLARE_AI_MODEL"),
     },
     stt: {
-      url: required("CLOUDFLARE_STT_URL"),
-      apiKey: required("CLOUDFLARE_STT_API_KEY"),
       model: required("CLOUDFLARE_STT_MODEL"),
     },
   },
   cartesia: {
     apiKey: required("CARTESIA_API_KEY"),
-    model: required("CARTESIA_MODEL"),
+    model: required("CARTESIA_MODEL_ID"),
     voiceId: required("CARTESIA_VOICE_ID"),
   },
 };
