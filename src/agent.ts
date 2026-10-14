@@ -46,6 +46,10 @@ export default defineAgent({
       });
     });
 
+    session.on(voice.AgentSessionEventTypes.UserInputTranscribed, (event) => {
+      console.log("[agent] user transcript", event.transcript);
+    });
+
     session.on(voice.AgentSessionEventTypes.Error, (event) => {
       console.error("[agent] session error", event.error);
     });
