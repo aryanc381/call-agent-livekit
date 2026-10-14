@@ -1,0 +1,26 @@
+{
+  "name": "call-agent-livekit",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "tsx src/agent.ts dev",
+    "start": "tsx src/agent.ts start",
+    "typecheck": "tsc --noEmit",
+    "format": "prettier --write ."
+  },
+  "dependencies": {
+    "@livekit/agents": "^1.9.2",
+    "@livekit/agents-plugin-cartesia": "^1.9.2",
+    "@livekit/agents-plugin-openai": "^1.9.2",
+    "@livekit/rtc-node": "^1.1.0",
+    "dotenv": "^16.4.7",
+    "openai": "^6.49.0"
+  },
+  "devDependencies": {
+    "@types/node": "^24.10.0",
+    "prettier": "^3.6.2",
+    "tsx": "^4.20.6",
+    "typescript": "^5.9.3"
+  },
+  "packageManager": "pnpm@12.5.1"
+}
