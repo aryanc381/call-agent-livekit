@@ -53,6 +53,7 @@ export class CloudflareSTT extends stt.STT {
     }
 
     const payload = (await response.json()) as CloudflareSTTResponse;
+    console.log("[cloudflare-stt] response", JSON.stringify(payload));
     const text = getText(payload);
     if (!text) throw new Error("Cloudflare STT returned an empty transcript");
 
