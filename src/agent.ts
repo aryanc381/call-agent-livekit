@@ -46,12 +46,13 @@ export default defineAgent({
       console.error("[agent] session error", event.error);
     });
 
+    await ctx.connect();
+
     await session.start({
       agent: voice.Agent.create({ instructions }),
       room: ctx.room,
     });
 
-    await ctx.connect();
     await session.generateReply({
       instructions: "Greet the user warmly and ask how you can help.",
     });
