@@ -18,6 +18,10 @@ Never use markdown, emojis, bullets, or long explanations.`;
 
 export default defineAgent({
   entry: async (ctx: JobContext) => {
+    const tts = createCartesiaTTS(config.cartesia);
+    tts.prewarm();
+    ctx.addShutdownCallback(() => tts.close());
+
     const session = new voice.AgentSession({
       stt: new CloudflareSTT({
         ...config.cloudflare.stt,
@@ -31,7 +35,7 @@ export default defineAgent({
         apiToken: config.cloudflare.apiToken,
         aiGatewayId: config.cloudflare.aiGatewayId,
       }),
-      tts: createCartesiaTTS(config.cartesia),
+      tts,
       turnHandling: {
         turnDetection: "stt",
         interruption: { mode: "vad" },
